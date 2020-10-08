@@ -1,5 +1,3 @@
-
-
 # MyNote_Mongoose
 
 https://mongoosejs.com/docs/index.html
