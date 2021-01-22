@@ -36,7 +36,7 @@ contains execution status information
 
 performs the function of a status register and program counter
 
-___
+## Interrupt
 
 1. User program ing
 2. Interrupt
@@ -48,4 +48,18 @@ ___
 8. Resume all information in control stack
 9. PC point to stack pointer(user program before)
 
-Spatial Locality, Temporal Locality
+## Spatial Locality
+
+If a particular storage location is referenced at a particular time, then it is likely that nearby memory locations will be referenced in the near future.
+
+## Temporal Locality
+
+If at one point a particular memory location is referenced, then it is likely that the same location will be referenced again in the near future
+
+## Direct memory access (DMA)
+
+Allows hardware subsystems to access main system memory independent of CPU
+
+Without DMA, when the CPU is using programmed input/output, it is typically fully occupied for the entire duration of the read or write operation, and is thus unavailable to perform other work. 
+
+With DMA, the CPU first initiates the transfer, then it does other operations while the transfer is in progress, and it finally receives an interrupt from the DMA controller (DMAC) when the operation is done
