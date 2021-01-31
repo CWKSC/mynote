@@ -1,4 +1,30 @@
+## Participation constraint 
+
+  - total participation
+  - partial participation
+
+total participation by double line
+partial participation by single line.
+
+Cardinality constraints define the maximum number of relationship instances
+Participation constraint define the minimum number of relationship instances
+
+partial participation -> minimum = 0
+total participation -> minimum = 1
+
+(min, max) notation can indicate Cardinality constraints and Participation constraint at the same time
+
+## See Other
+
+https://www.mysql.tw/2013/03/entity-relationship-model.html
+
+http://postgresql.wisdomfish.org/zi-liao-ku-de-he-xin-li-lun-yu-shi-wu/ch02-shi-ti-guan-xi-mo-shi-ji-ben-gai-nian
+
+Partial keys  
+https://www.geeksforgeeks.org/partial-unique-secondary-composite-and-surrogate-keys-in-dbms/
+
 ## ER to Relation Model
+
 1. Strong Entity to Relation (Table), Attribute to be Column Header, Key attribute to be primary key, non-simple attribute don't need to convert in this step
 2. Weak Entity to Relation (Table) as same as step 1, add primary key attribute of owner as foreign key to column
 3. Convert 1 : 1 relationship by Foreign key approach, Merged relationship approach, "Cross reference or relationship relation approach"
@@ -40,6 +66,7 @@ In relation model, all tuple in the relation must be distinct
 
 ## See Other
 https://medium.com/omarelgabrys-blog/database-modeling-logical-design-part-6-af029e93cc1f
+
 https://cs.uwaterloo.ca/~tozsu/courses/CS338/lectures/12%20ER%20to%20Rel.pdf
 
 ## Integrity Constraints
