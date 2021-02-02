@@ -125,3 +125,92 @@ Tuples in R1 have attributes FK (foreign key) that reference to primary key attr
 FK and PK have same domain
 Value in R1 must refer to some existing value in R2, it should not refer to something which does not exist
 Value in R1 allow null value
+
+## Operations on Relations
+Insert, Modify, Delete
+Integrity constraints should not violated by those operation
+Note that Insert and Modify Violation is so common sense
+Delete Violation need to be more care or remember
+
+## Insert Violation
+Domain constraint: insert value not in domain, e.g put string into int
+Key constraint: the insert key value already exist in relation
+Entity integrity: value of primary key in inset tuple is null
+Referential integrity: insert foreign key value not exist in reference relation
+
+## Modify Violation
+Domain constraint: modify value not in domain, e.g put string into int
+Key constraint: the modify key value already exist in relation
+Entity integrity: value of primary key in modify tuple is null
+Referential integrity: modify foreign key value not exist in reference relation
+
+## Delete Violation
+Only violate Referential integrity constraint
+Primary key value of tuple be deleted, and this refer from other tuple
+
+## Prevent Violation of Integrity constraints
+Several action can be taken:
+- Cancel operation
+- Continue operation but info user of violation 
+- Correct violation operation, by Trigger addition update, e.g. Cascade deletion, delete tuple and reference tuple delete too
+- Run User specified error correction routine
+
+## Functional Dependency
+Denote X -> Y, Constraint between two attribute set in relation
+X depend Y, Y determine X
+t1[X] = t2[X], t1[Y]  = t2[Y],  for t1, t2 is tuple of relation
+value of Y of tuple depend on value of X of the tuple
+e.g city -> country
+
+## Formal definition of Functional Dependency
+Let R be relation schema, α ⊆ R, β ⊆ R (α and β are sets of R's attribute), we say
+α -> β
+In any legal relation instance r(R), for all tuple t1 and t2 in r, we have
+t1[α] = t2[α] => t1[β]  = t2[β]
+
+## Usage of Functional Dependency
+- Set constraints on relation (e.g define key constraint)
+- Test relation under given set of Functional Dependency
+- Test goodness of database schema design (nomalization)
+
+## Define key constraints by Functional Dependency
+Set of attribute {A1, A2, ..., An} 
+Superkey definition: attributes functionally determine all other attributes of relation
+Minimal: No proper subset functionally determine all other attributes of relation
+Then it is candidate key
+
+## Properties of Functional Dependency
+If X -> Y, then Y not -> X
+If X -> Y, then XZ -> Y
+trivial: A -> A,  AB -> A  always true
+
+## Inference Rule for Functional Dependency
+Armstrong's inferemce rules:
+- Reflexive: If Y subset of X, then X -> Y
+- Augmentation: If X -> Y, then XZ -> YZ
+- Transitive: If X -> Y and Y -> Z, then X -> Z
+- Decomposition: If X -> YZ, then X -> Y and X -> Z
+- Union: If X -> Y and X -> Z, then X -> YZ
+- Pseudotransitivity: If X -> Y and WY -> Z, then WX -> Z
+
+## Prove of Union rules
+(1) X -> Y (Given)
+(2) X -> Z (Given)
+(3) XX -> XY => X -> XY (Augmentation rule by (1))
+(4) XY -> YZ (Augmentation rule by (2))
+(5) X -> YZ (Transitive rule by (3) and (4))
+
+## Closure
+Closure of set F of Functional Dependency is set F+ of all Functional Dependency than can be inferred from F
+Closure of set of attributes X with respect to F is the set X+ of all attributes the are functionally determined by X
+If X+ consists all attribute, X is superkey
+If every Functional Dependency in G also in F+, that said Functional Dependency F cover G
+
+## Equivalence of sets of  Functional Dependency
+Set F of Functional Dependency cover another set of Functional Dependency G
+if every Functional Dependency in G is also in F+ (in F Closure) (F cover G)
+Two sets of Functional Dependency F and G are equivalent if:
+- Every Functional Dependency in F can inferred from G
+- Every Functional Dependency in F can inferred from F
+- F and G are equivalent if F+ = G+  (Closure is Equivalence)
+E.g.  F: A -> BC,   G: A -> B, A -> C,   F+ = G+
