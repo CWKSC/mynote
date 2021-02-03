@@ -140,3 +140,9 @@ Blocked Queue store blocked process that waiting for event occur
 There could be many different events, it not efficient if simply put all the blocked process into singe queue
 Better way is Multiple Blocked Queue for each type of event
 When event occur, we can simply dequeue the first process
+
+## Suspended Processes
+If all processes in main memory waiting for I/O operation, then processor becomes idle
+To solve this problem, swap blocked process out to disk
+So that memory space can release for new process
+Blocked state become Suspend state when process swapped to disk
