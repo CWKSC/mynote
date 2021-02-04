@@ -146,3 +146,48 @@ If all processes in main memory waiting for I/O operation, then processor become
 To solve this problem, swap blocked process out to disk
 So that memory space can release for new process
 Blocked state become Suspend state when process swapped to disk
+
+- Blocked (suspend to Suspend State)
+- Suspend (Activate to Ready)
+
+But One Process is no enough, we need to distinguish some suspend state already occur event and ready for execution
+
+Other the other hand, release memory is reason of swap process , not only blocked process swap, Running Process may require to suspend
+
+So we divide to Block/Suspend and Ready/Suspend State
+
+## Two Suspend States
+
+Two addition state of Five State Model
+
+- Blocked/Suspend (Event occurs to Ready/Suspend)
+- Ready/Suspend (Activate to Ready)
+
+ There are total Seven State:
+
+- New (Admit to Ready, Admit to Ready/Suspend)
+- Ready (Dispatch to Running, Suspend to Ready/Suspend)
+- Running (Timeout to Ready, Event wait to Blocked, Suspend to Ready/Suspend, Release to Exit)
+- Blocked (Event occurs to Ready, Suspend to Blocked/Suspend)
+- Blocked/Suspend (Event occurs to Ready/Suspend, Activate to Blocked)
+- Ready/Suspend (Activate to Ready)
+- Exit
+
+## Reason of Process Suspend 
+
+- Swap (Release main memory to bring in new process)
+- Interactive User Request (User suspend for debugging)
+- Timing (Execute periodically)
+- Parent Process Request
+
+## OS Control Table
+
+- Memory Tables
+- I/O Tables
+- File Tables
+- Primary Process Table (and it point to Process Image)
+
+A lot of information need to store about each process, so we require another data structure called Process Image
+
+## Memory Table
+
