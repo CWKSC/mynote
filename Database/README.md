@@ -4,12 +4,15 @@
   - partial participation
 
 total participation by double line
+
 partial participation by single line.
 
 Cardinality constraints define the maximum number of relationship instances
+
 Participation constraint define the minimum number of relationship instances
 
 partial participation -> minimum = 0
+
 total participation -> minimum = 1
 
 (min, max) notation can indicate Cardinality constraints and Participation constraint at the same time
@@ -40,28 +43,42 @@ https://www.geeksforgeeks.org/partial-unique-secondary-composite-and-surrogate-k
 
 ## Foreign key approach
 Choose primary key in one of them and reference it in another entity (Foreign key)
+
 It prefer the key of entity of total participation to be the chosen key (since avoid Null value)
+
 if it is one to many relationship, we can only add the Foreign key to many side (chosen primary key in one side)
+
 Foreign key approach cannot convert many-to-many relationship 
 
 ## Merged relationship approach
 Merge two relation to be one relation by combining attribute
+
 It require both total participation 
+
 (since this led every tuple in entity corresponding tuple in another entity)
+
 This method is not commonly used
 
 ## Cross reference or relationship relation approach
 Build a new relation include two foreign key refer to two primary key of entity respectively
+
 In N-ary relationship, include N foreign key refer to N primary key respectively
+
 If relationship contain simple attribute, it will also include to the new relation as one attribute
+
 In Multivalue attributes, include Multivalue attributes to the new relation, and  also include one foreign key refer to the primary key of the own of Multivalue attributes
-If  Multivalue attributes is composite, include all it simple components
+
+If Multivalue attributes is composite, include all it simple components
+
 Mainly use for convert many-to-many, N-ary relationship and  Multivalue attributes 
 
 ## Other 
 Foreign key refer to primary at same table called self reference
+
 In diagram, be point by arrow one is primary key, the line start from column is foreign key
+
 the double line diamond is indicate the Identify relationship that is between weak entity and strong entity
+
 In relation model, all tuple in the relation must be distinct
 
 ## See Other
@@ -71,8 +88,11 @@ https://cs.uwaterloo.ca/~tozsu/courses/CS338/lectures/12%20ER%20to%20Rel.pdf
 
 ## Integrity Constraints
 Relational model contain a set of Integrity Constraints, called IC
+
 It determine which values are permissible (allow) and which are not
+
 All tuple in database should satisfy all Integrity Constraints
+
 If satisfy all, called Valid state, otherwise called Invalid state
 
 ## Three main types of constraints
@@ -82,11 +102,14 @@ If satisfy all, called Valid state, otherwise called Invalid state
 
 ## Inherent or Implicit Constraints
 Based on data model itself
+
 No matter how you define database model, this constraint always exist
+
 E.g. not allow multiple value 
 
 ## Schema-based or Explicit Constraints
 Depends on how you define schema
+
 E.g. cardinality ratio constraint
 
 ## Application-based or Semantic constraints
@@ -100,52 +123,76 @@ Specified by application program
 
 ## Domain constraints
 Every value in tuple must be atomic value from domain
+
 It allow null value
+
 E.g. integer, float, character, string, real number
 
 ## Key constraints
 Superkey, is a subset of attribute, uniquely identify tuple
+
 No two tuple have same value of Superkey
+
 Every relation at least have one default Superkey, that Superkey is set of all attributes
+
 Since in relation model, all tuple in the relation must be distinct
 
 Candidate Key, or just called Key
+
 Candidate Key is definitely a Supekey
+
 It is minimal Superkey, if we remove any attribute of it, it will not be Superkey
+
 If relation has several Candidate Key, one will chosen as primary key
 
 ## Entity integrity constraints
 No primary key value can be null value
+
 t[PK] != null, for any tuple t of R, R is Relation, PK is primary key
 
 ## Referential integrity constraints
 At foreign key, R1 -> R2,  for R1, R2 both relation
+
 R1 called referncing relation, R2 called referenced relation
+
 Tuples in R1 have attributes FK (foreign key) that reference to primary key attribute PK of R2
+
 FK and PK have same domain
+
 Value in R1 must refer to some existing value in R2, it should not refer to something which does not exist
+
 Value in R1 allow null value
 
 ## Operations on Relations
 Insert, Modify, Delete
+
 Integrity constraints should not violated by those operation
+
 Note that Insert and Modify Violation is so common sense
+
 Delete Violation need to be more care or remember
 
 ## Insert Violation
 Domain constraint: insert value not in domain, e.g put string into int
+
 Key constraint: the insert key value already exist in relation
+
 Entity integrity: value of primary key in inset tuple is null
+
 Referential integrity: insert foreign key value not exist in reference relation
 
 ## Modify Violation
 Domain constraint: modify value not in domain, e.g put string into int
+
 Key constraint: the modify key value already exist in relation
+
 Entity integrity: value of primary key in modify tuple is null
+
 Referential integrity: modify foreign key value not exist in reference relation
 
 ## Delete Violation
 Only violate Referential integrity constraint
+
 Primary key value of tuple be deleted, and this refer from other tuple
 
 ## Prevent Violation of Integrity constraints
@@ -157,15 +204,22 @@ Several action can be taken:
 
 ## Functional Dependency
 Denote X -> Y, Constraint between two attribute set in relation
+
 X depend Y, Y determine X
+
 t1[X] = t2[X], t1[Y]  = t2[Y],  for t1, t2 is tuple of relation
+
 value of Y of tuple depend on value of X of the tuple
+
 e.g city -> country
 
 ## Formal definition of Functional Dependency
 Let R be relation schema, α ⊆ R, β ⊆ R (α and β are sets of R's attribute), we say
+
 α -> β
+
 In any legal relation instance r(R), for all tuple t1 and t2 in r, we have
+
 t1[α] = t2[α] => t1[β]  = t2[β]
 
 ## Usage of Functional Dependency
@@ -175,14 +229,19 @@ t1[α] = t2[α] => t1[β]  = t2[β]
 
 ## Define key constraints by Functional Dependency
 Set of attribute {A1, A2, ..., An} 
+
 Superkey definition: attributes functionally determine all other attributes of relation
+
 Minimal: No proper subset functionally determine all other attributes of relation
+
 Then it is candidate key
 
 ## Properties of Functional Dependency
 If X -> Y, then Y not -> X
+
 If X -> Y, then XZ -> Y
-trivial: A -> A,  AB -> A  always true
+
+Trivial: A -> A,  AB -> A  always true
 
 ## Inference Rule for Functional Dependency
 Armstrong's inferemce rules:
@@ -195,21 +254,31 @@ Armstrong's inferemce rules:
 
 ## Prove of Union rules
 (1) X -> Y (Given)
+
 (2) X -> Z (Given)
+
 (3) XX -> XY => X -> XY (Augmentation rule by (1))
+
 (4) XY -> YZ (Augmentation rule by (2))
+
 (5) X -> YZ (Transitive rule by (3) and (4))
 
 ## Closure
 Closure of set F of Functional Dependency is set F+ of all Functional Dependency than can be inferred from F
+
 Closure of set of attributes X with respect to F is the set X+ of all attributes the are functionally determined by X
+
 If X+ consists all attribute, X is superkey
+
 If every Functional Dependency in G also in F+, that said Functional Dependency F cover G
 
 ## Equivalence of sets of  Functional Dependency
 Set F of Functional Dependency cover another set of Functional Dependency G
+
 if every Functional Dependency in G is also in F+ (in F Closure) (F cover G)
+
 Two sets of Functional Dependency F and G are equivalent if:
+
 - Every Functional Dependency in F can inferred from G
 - Every Functional Dependency in F can inferred from F
 - F and G are equivalent if F+ = G+  (Closure is Equivalence)

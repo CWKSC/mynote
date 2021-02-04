@@ -66,7 +66,9 @@ With DMA, the CPU first initiates the transfer, then it does other operations wh
 
 ## Process
 Instance of program running
+
 Execution of a sequence of instructions, state, and associated set of system resource
+
 Much more than just running program
 
 ## Process Element
@@ -82,16 +84,22 @@ Much more than just running program
 
 ## Interleave execution of processes
 Dispatcher is one of function of Operating system
+
 Dispatcher switch processor from one process to other
+
 Dispatcher generate Clock interrupts (also called timeout), and switch processor
+
 All in memory
 
 ## Create Process in UNIX
 Parent process can create child process by system call - fork()
+
 After create child process, all following routine are possible
+
 - Stay in parent process
 - Transfer control to child process
 - Transfer control to another process
+
 fork() will return pid,  if pid equal 0, this is child process
 
 Example:
@@ -111,11 +119,14 @@ int main(){
 }
 ```
 `(1)` and `(3)`  execute both child and parent, only child process execute `(2)`
+
 Variable value between child and parent process will not share 
+
 State and value of variable will copy when process create
 
 ## Other
 Application corresponds to one or more process
+
 You can download Process Explorer to find more information of process
 
 ## Two-State Process Model
@@ -123,7 +134,9 @@ You can download Process Explorer to find more information of process
 - Not Running (Dispatch to Running state)
 
 Process not running will keep on Queue, store all waiting process
+
 Waiting for dispatcher to dispatch first process to processor for execution
+
 After timeout then go back to the end of the queue
 
 ## Five-State Process Model
@@ -135,16 +148,24 @@ Not Running state can divide to Ready and Blocked (my be waiting for I/O operati
 - Exit
 
 Use Two Queues, Ready Queue and Blocked Queue
+
 Ready Queue store process that ready for execution
+
 Blocked Queue store blocked process that waiting for event occur
+
 There could be many different events, it not efficient if simply put all the blocked process into singe queue
+
 Better way is Multiple Blocked Queue for each type of event
+
 When event occur, we can simply dequeue the first process
 
 ## Suspended Processes
 If all processes in main memory waiting for I/O operation, then processor becomes idle
+
 To solve this problem, swap blocked process out to disk
+
 So that memory space can release for new process
+
 Blocked state become Suspend state when process swapped to disk
 
 - Blocked (suspend to Suspend State)
