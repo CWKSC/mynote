@@ -212,3 +212,139 @@ A lot of information need to store about each process, so we require another dat
 
 ## Memory Table
 
+Track main (real) and secondary (virtual) memory
+
+- Allocation of main or secondary memory to process
+- Protection attribute of blocks of main or virtual memory (to indicate which process can access which memory region)
+- Information to manage virtual memory
+
+## I/O Table
+
+Manage I/O devices and channels
+
+I/O devices available or assigned to particular process
+
+Infomration of I/O operation: status, location in main memory (source or destination) of I/O transfer
+
+## File Table
+
+- Location on secondary memory
+- Status
+- Other attributes (read only? executable?)
+
+Information may maintained by file management system instead of File Table
+
+## Process Table
+
+In Primary Process Table, one entry for each process
+
+Each entry point to Process Image
+
+Process Image contain:
+
+- User Data 
+- User Program
+- Stack (has one or more LIFO stack used to store parameters and calling address)
+- Process Control Block
+
+==================================
+
+## Multithreading
+
+Concurrent execution of single process
+
+- Single-threaded Approaches
+
+- Multithreaded Approaches (e.g JRE)
+
+Every thread will have there own program count
+
+## Process vs Thread
+
+Process 
+
+- Unit of resource allocation: virtual address space to hold process image
+- Protection
+- Switching process need communicate will OS
+
+Thread
+
+- State (ready, running)
+- Save thread context when not running
+- Shard memory and resource if thread in same process
+
+Thread also have execution state and need synchronize
+
+## State of Thread
+
+- Running
+- Ready
+- Block
+
+Execution state is store in thread-level data structure
+
+When process is suspended, all thread related to process suspended together, since they shard address space
+
+Terminate process will also terminate all thread 
+
+## Benefits of Thread
+
+Application implement with collection of thread is more efficient than separate process. Because:
+
+- Time of create new thread is less then create new process
+- Time of terminate thread is less then process
+- Time of switching is less
+- Efficiency communication since shard memory and resource, thread can communication instead of invoking kernel
+
+## Categories of Thread Implementation
+
+- User Level Thread (ULT)
+
+- Kernel level Thread (KLT), (also called kernel-supported threads and lightweight processes)
+- Combined Approach
+
+## User Level Thread (ULT)
+
+Thread manage by application
+
+Implement by user (e.g by calling thread library)
+
+Kernel don't know existence of threads
+
+Kernel handles as single-threaded process
+
+User Level Thread can run in any OS
+
+Cannot take advantage of multiprocessing
+
+If one of User Level Thread is blocked, it will block whole process
+
+Switching don't require kernel mode
+
+User Level Thread (ULT) small and faster than Kernel level Thread (KLT)
+
+## Kernel level Thread (KLT)
+
+Thread manage by kernel
+
+Context information of Process and Thread both handle by kernel
+
+Slow than User Level Thread (ULT)
+
+Even one of Kernel level Thread is blocked, kernel still can schedule another thread
+
+Kernel can simultaneously schedule multiple threads into multiple processors
+
+Kernel level Thread can multiprocessing
+
+Kernel level Thread need OS support
+
+Transfer control require a mode switch to kernel
+
+## Combined Approach
+
+m-to-n mapping hybrid implementation
+
+- Application creates m ULTs
+- OS provides pool of n KLTs
+
