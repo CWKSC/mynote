@@ -249,6 +249,12 @@ Process Image contain:
 
 ==================================
 
+## Thread
+
+Basic unit of CPU utilization
+
+Contain program counter, stack, thread id, and registers
+
 ## Multithreading
 
 Concurrent execution of single process
@@ -348,3 +354,10 @@ m-to-n mapping hybrid implementation
 - Application creates m ULTs
 - OS provides pool of n KLTs
 
+Multithread in same application can run in multi processor
+
+## See Other
+
+https://www.tutorialspoint.com/operating_system/os_multi_threading.htm
+
+http://www4.comp.polyu.edu.hk/~csajaykr/myhome/file/Multithreading.pdf
