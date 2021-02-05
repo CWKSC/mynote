@@ -245,9 +245,96 @@ Process Image contain:
 - User Data 
 - User Program
 - Stack (has one or more LIFO stack used to store parameters and calling address)
-- Process Control Block
+- Process Control Block (PCB)
 
-==================================
+## Process Control Block (PCB)
+
+Contain number of attributes used by OS for process control
+
+All information about process
+
+Make possible to interrupt running process and resume
+
+Those information can group into three categories:
+
+- Process identification
+- Processor state information
+- Process control information
+
+## Process identification
+
+Each process have unique numeric identifier (PID)
+
+## Processor state information
+
+Consists of processor registers' content
+
+Program counter (PC)
+
+Program status word (PSW)
+
+Stack pointers (SP)
+
+## Process control information
+
+- Process state
+- Priority
+- Scheduling-related info
+- Waiting event
+- Data structuring
+
+## Process List Structures
+
+Queuing structure can implemented as linked lists of PCBs
+
+## Modes of Execution
+
+- User mode
+- System mode (control mode or kernel mode)
+
+User mode is less-privileged mode, user program typically execute in this mode
+
+System mode is more-privileged mode, Kernel can execute this mode
+
+## Process creation
+
+1. Assign unique process identifier (PID) and add new entry to process table
+2. Allocate space (process image)
+3. Initialize process control block (PCB)
+4. Set up linkage as put process to Ready list
+5. Create or expand other data structure as accounting file for performance assessment
+
+## Process Switching
+
+Save state of old process and load saved state for new process
+
+When to Switch Process?
+
+- Interrupt (Clock interrupt, I/O operation is done)
+- Trap (illegal file access) (Handle error)
+- System call (or supervisor call)
+
+## System call
+
+`pgrep -f <program name>` to find PID with program name
+
+`strace -pPID` to find all involved system calls, e.g `strace -p1234`
+
+For example: `getchar()` will call system call `read()`, `cout` will call `write()`
+
+## Step of Process Switching
+
+1. Save context of processor (Program counter, other registers)
+2. Update PCB
+3. Move PCB to appropriate queue - ready, blocked, ready/suspend
+4. Select another process for execution
+5. Update PCB of selected process
+6. Update memory management data structure
+7. Restore context of processor that selected process was last switch out
+
+## Mode Switching 
+
+====================================
 
 ## Processes characteristics
 
