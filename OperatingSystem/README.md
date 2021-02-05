@@ -249,37 +249,63 @@ Process Image contain:
 
 ==================================
 
+## Processes characteristics
+
+Resource ownership
+
+- Allocate ownership of resources, including virtual space for hold process image
+- OS provided Protection function to prevent unwanted interference between process with resource
+
+Dispatching/scheduling/execution
+
+- Execution of process may interleaved
+- Execution state and dispatching priority and this is an entity of scheduled and dispatch by OS
+
+Two characteristics of process can treated independently by OS
+
+- Unit of dispatching refer to thread or lightweight process
+- Unit of resource ownership refer to process or task
+
+## Multithreading
+
+Concurrent execution of single process
+
+## Single-threaded Approaches
+
+Every process have only one thread
+
+## Multithreaded Approaches
+
+Every process can contain multithreads
+
+Every thread will have there own program counters
+
 ## Thread
 
 Basic unit of CPU utilization
 
 Contain program counter, stack, thread id, and registers
 
-## Multithreading
-
-Concurrent execution of single process
-
-- Single-threaded Approaches
-
-- Multithreaded Approaches (e.g JRE)
-
-Every thread will have there own program count
+Resource is share between thread in same process
 
 ## Process vs Thread
 
 Process 
 
-- Unit of resource allocation: virtual address space to hold process image
+- Unit of resource allocation: virtual address space (including process image)
 - Protection
 - Switching process need communicate will OS
 
 Thread
 
-- State (ready, running)
+- State (ready, running, and blocked)
 - Save thread context when not running
 - Shard memory and resource if thread in same process
+- Execution stack
 
-Thread also have execution state and need synchronize
+## Similar between Process and Thread
+
+Both have execution state and need synchronize
 
 ## State of Thread
 
@@ -361,3 +387,11 @@ Multithread in same application can run in multi processor
 https://www.tutorialspoint.com/operating_system/os_multi_threading.htm
 
 http://www4.comp.polyu.edu.hk/~csajaykr/myhome/file/Multithreading.pdf
+
+https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html
+
+## POSIX Pthreads
+
+A standardized C language threads programming interface
+
+Implemented with a `pthread.h` header
