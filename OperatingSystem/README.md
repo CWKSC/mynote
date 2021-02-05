@@ -395,3 +395,27 @@ https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html
 A standardized C language threads programming interface
 
 Implemented with a `pthread.h` header
+
+## Difficulties of Concurrency
+
+Relative speed of execution of processes cannot predicted since
+
+- Depend on other activity
+- Way of OS handles interrupts
+- Scheduling policies of OS
+
+Sharing of global resources
+
+OS difficult to optimally manage resource allocation
+
+- Multiple processes may request use of same resource
+
+Hard to locate programming errors
+
+- Results not repeatable, deterministic, and reproducible
+
+## Race Condition
+
+Multiple processes or thread read or write shared data
+
+Final value will depend on execution order, first execution will be cover
