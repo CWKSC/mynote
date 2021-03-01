@@ -3,27 +3,43 @@
   - total participation
   - partial participation
 
-total participation by double line
+Total participation by double line
 
-partial participation by single line.
+Partial participation by single line
 
-Cardinality constraints define the maximum number of relationship instances
+Cardinality constraints define maximum number of relationship instances
 
-Participation constraint define the minimum number of relationship instances
+Participation constraint define minimum number of relationship instances
 
-partial participation -> minimum = 0
+Partial participation -> minimum = 0
 
-total participation -> minimum = 1
+Total participation -> minimum = 1
 
 (min, max) notation can indicate Cardinality constraints and Participation constraint at the same time
 
+E1, E2 is Entity, R is Relationship
+
+E1 ----- (min1, max1) ------ R ----- (min2, max2) ----- E2
+
+E1 R (min, max) E2
+
+E2 R (min, max) E1
+
+Employee ----- (1, 1) ----- Work for ----- (1, N) ----- Department
+
+Employee Work for (1, 1) E2
+
+Department (be) Work for (1, N) Employee
+
 ## See Other
 
+實體關係模型(Entity-relationship model)
 https://www.mysql.tw/2013/03/entity-relationship-model.html
 
+CH02 實體關係模式--基本概念 - PostgreSQL 中文-Mammoth
 http://postgresql.wisdomfish.org/zi-liao-ku-de-he-xin-li-lun-yu-shi-wu/ch02-shi-ti-guan-xi-mo-shi-ji-ben-gai-nian
 
-Partial keys  
+Partial keys 
 https://www.geeksforgeeks.org/partial-unique-secondary-composite-and-surrogate-keys-in-dbms/
 
 ## ER to Relation Model
