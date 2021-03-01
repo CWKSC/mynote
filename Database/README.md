@@ -283,3 +283,23 @@ Two sets of Functional Dependency F and G are equivalent if:
 - Every Functional Dependency in F can inferred from F
 - F and G are equivalent if F+ = G+  (Closure is Equivalence)
 E.g.  F: A -> BC,   G: A -> B, A -> C,   F+ = G+
+
+## Normalization
+
+### First normal form (1NF)
+
+- All tuple unique
+- No composite or multivalued attribute (Atomic)
+
+### Second Normal Form (2NF)
+
+- No partial functional dependency
+- All column must full functional dependency to primary key
+
+### Third Normal Form (3NF)
+
+- No transitive functional dependency
+
+### Boyce-Codd Normal Form (BCNF)
+
+- Primary Key with only one column 
