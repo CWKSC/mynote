@@ -62,7 +62,13 @@ Choose primary key in one of them and reference it in another entity (Foreign ke
 
 It prefer the key of entity of total participation to be the chosen key (since avoid Null value)
 
-if it is one to many relationship, we can only add the Foreign key to many side (chosen primary key in one side)
+if it is one to many relationship, we can only add Foreign key to many side (chosen primary key in one side)
+
+(Since column be point by Foreign key must be primary key, primary key must unique value and no repeat, so start point of Foreign key must add on many side)
+
+For example, employee work for one department, department (be) work for many employee
+
+Now employee is many side, we add Foreign key to employee, it means one column of employee table point to department primary key
 
 Foreign key approach cannot convert many-to-many relationship 
 
@@ -98,6 +104,7 @@ the double line diamond is indicate the Identify relationship that is between we
 In relation model, all tuple in the relation must be distinct
 
 ## See Other
+Database — Design: Logical Design (Part 6) | by Omar Elgabry | OmarElgabry's Blog | Medium
 https://medium.com/omarelgabrys-blog/database-modeling-logical-design-part-6-af029e93cc1f
 
 https://cs.uwaterloo.ca/~tozsu/courses/CS338/lectures/12%20ER%20to%20Rel.pdf
