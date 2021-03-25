@@ -334,6 +334,10 @@ For example: `getchar()` will call system call `read()`, `cout` will call `write
 
 ## Mode Switching 
 
+## See Other
+
+https://www.geeksforgeeks.org/introduction-of-process-management/
+
 ====================================
 
 ## Processes characteristics
@@ -506,3 +510,10 @@ Hard to locate programming errors
 Multiple processes or thread read or write shared data
 
 Final value will depend on execution order, first execution will be cover
+
+There are three popular solution to solve the problem:
+
+- Mutual Exclusion
+- Semaphores
+- IPC -Message Passing
+
