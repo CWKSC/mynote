@@ -244,9 +244,137 @@ Class Design Principles
 - Interface Segregation Principle (ISP)
 - Law of Demeter Principle (LoD)
 
+S.O.L.I.D
+
 ### Open-Closed Principle (OCP)
 
 Open for Extension
 
 but Closed for Modification
 
+make all member private
+
+### Liskov Substitution Principle (LSP)
+
+subclass can be substiute of parent class
+
+https://www.jyt0532.com/2020/03/22/lsp/
+
+>If S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program (correctness, task performed, etc.)
+
+https://medium.com/@f40507777/%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8F%9B%E5%8E%9F%E5%89%87-liskov-substitution-principle-adc1650ada53
+
+### Dependency Inversion Principle (DIP)
+
+high level should not depend on low level
+
+use interface for better extension
+
+```java
+// Bad
+class A {
+    B b = new B();
+}
+class B {}
+
+// Good
+class A {
+    B b;
+    A(B b) {
+        this.b = b;
+    }
+}
+interface B {}
+```
+
+### Single Responsibility Principle (SRP)
+
+> Just Because You Can, Doesn't Mean You Should
+
+Don't make function handle too many functionality
+
+```java
+// bad
+class Powerful { 
+    // mix function of A and B Class !
+    void A_A();
+    void A_B();
+    // ... 100 line
+    void B_A();
+    void B_B();
+}
+
+// OK
+class A {
+    void A();
+    void B();
+}
+class B {
+    void A();
+    void B();
+}
+```
+
+https://medium.com/@f40507777/%E5%96%AE%E4%B8%80%E8%81%B7%E8%B2%AC%E5%8E%9F%E5%89%87-single-responsibility-principle-7b4eb03f1fff
+
+### Interface Segregation Principle (ISP)
+
+```java
+// bad
+class A {
+    void B();
+    void C();
+    void D();
+}
+A a = new A();
+a.B();// only use B() function
+
+// good
+class A implements IB, IC, ID { }
+class IB { void B(); }
+class IC { void C(); }
+class ID { void D(); }
+IB ib = new A();
+ib.B();
+```
+
+https://www.jyt0532.com/2020/03/23/isp/
+
+### Law of Demeter Principle (LoD)
+
+> Don't talk to strangers
+
+Each unity should only have limited knowledge about other units
+
+```java
+// bad
+class A {
+    B b;
+    void Foo() {
+        b.c.E();
+	}
+}
+class B {
+    C c;
+}
+class C {
+    void E() { }
+}
+
+// Good
+class A {
+    B b;
+    void Foo(){
+        b.D()
+	}
+}
+class B {
+    C c;
+    void D() { c.E(); }
+}
+class C {
+    void E() {}
+}
+```
+
+https://medium.com/@tonyhsu/%E8%BF%AA%E7%B1%B3%E7%89%B9-d2a375643b0f
