@@ -378,3 +378,170 @@ class C {
 ```
 
 https://medium.com/@tonyhsu/%E8%BF%AA%E7%B1%B3%E7%89%B9-d2a375643b0f
+
+## Gang-of-Four (GoF) Design Patterns
+
+Creational
+
+- Abstract Factory
+- **Factory Method** 
+- Builder
+- Protoype
+- **Singleton**
+
+Structural
+
+- **Facade**
+- Adapter
+- Bridge
+- Composite
+- Decorator
+- Flyweight
+- Proxy
+
+Behavioral
+
+- **Observer**
+- Interpreter
+- Template Method
+- Chain of Responsibility
+- **Command**
+- Iterator
+- Mediator
+- Memento
+- **State**
+- **Strategy**
+- Visitor
+
+### State Pattern
+
+object alter behavior when internal state change
+
+object behavior depend on its state
+
+State Interface implement by concrete class
+
+Context Class contain State
+
+```java
+// ok
+class A {
+    void Foo();
+}
+class B : A { void Foo(); }
+class C : A { void Foo(); }
+class D : A { void Foo(); }
+A a = new B() / C() / D();
+a.Foo();
+
+// better
+class A {
+    IFoo ifoo;
+    A() { ifoo = new B() / C() / D(); }
+    void Foo() { ifoo.Foo(); }
+}
+interface IFoo { void Foo(); }
+class B implements IFoo { void Foo(); }
+class C implements IFoo { void Foo(); }
+class D implements IFoo { void Foo(); }
+A a = new A();
+a.Foo();
+```
+
+but number of object will increase
+
+### Strategy Pattern
+
+similar to state pattern, but only one function for each state
+
+since state create a lot instance object
+
+Strategy pass to context as parameter
+
+State are create by context 
+
+```java
+class A {
+    IFoo ifoo;
+    void Foo() { ifoo.Foo(); }
+}
+interface IFoo { void Foo(); }
+class B implements IFoo { void Foo(); }
+class C implements IFoo { void Foo(); }
+class D implements IFoo { void Foo(); }
+A a = new A();
+a.ifoo = new B() / C() / D();
+a.Foo();
+```
+
+### Singleton
+
+create a static instance in class
+
+always only one
+
+```java
+class A {
+    static final A instance = new A();
+}
+A.instance // access
+```
+
+provide access in everywhere
+
+### Façade Pattern
+
+provide simple interface to access
+
+hide the backend detail
+
+https://dotblogs.com.tw/jesperlai/2018/04/15/153646
+
+### Factory Method Pattern
+
+define interface to create object
+
+object creation in run-time
+
+https://carsonwah.github.io/factory-design-pattern.html
+
+### Observer Pattern
+
+broadcast and subscribe
+
+notify/update 
+
+https://notfalse.net/10/observer-pattern
+
+### Command Pattern
+
+log, redo, undo
+
+Command interface
+
+Invoker, Client, Receiver
+
+https://notfalse.net/4/command-pattern
+
+## Ethics
+
+- Descriptive ethics
+- Applied ethics
+
+### Four Virtues
+
+- Prudence
+- Temperance
+- Fortitude
+- Justice
+
+### Five P's
+
+- Purpose
+- Pride
+- Patience
+- Persistence
+- Perspective
+
+
+
