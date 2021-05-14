@@ -515,5 +515,46 @@ There are three popular solution to solve the problem:
 
 - Mutual Exclusion
 - Semaphores
-- IPC -Message Passing
+- IPC Message Passing
+
+### Dining philosophers problem
+
+https://zh.wikipedia.org/wiki/%E5%93%B2%E5%AD%A6%E5%AE%B6%E5%B0%B1%E9%A4%90%E9%97%AE%E9%A2%98
+
+## Scheduling
+
+response time  
+
+turnaround time
+
+throughput
+
+processor utilization
+
+### Types of Scheduling
+
+- Long-term scheduling
+- Medium-term scheduling
+  - Swap
+- Short-term scheduling
+  - dispatcher
+- I/O scheduling
+
+### Decision Mode
+
+Non-preemptive
+
+Preemptive
+
+### Shortest Process Next (SPN)
+
+Non-preemptive
+
+select shortest expected processing time
+
+response time improve
+
+### Shortest Remaining Time (SRT)
+
+Preemptive version of SPN
 

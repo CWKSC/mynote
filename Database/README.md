@@ -326,3 +326,9 @@ E.g.  F: A -> BC,   G: A -> B, A -> C,   F+ = G+
 ### Boyce-Codd Normal Form (BCNF)
 
 - Primary Key with only one column 
+
+## Files and Hashed Files
+
+### Methods organizing Records on Disk
+
+Unordered, Ordered, Hashed
