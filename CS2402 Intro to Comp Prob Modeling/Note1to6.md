@@ -46,7 +46,7 @@ C(20 - ((1 - 0) + (1 - 1) + (1 - 2) + (1 - 3)) - 1, 4 - 1)
 
 https://zh.wikipedia.org/wiki/%E6%8F%92%E7%A9%BA%E6%B3%95
 
-### Unfinished Game 賭金分配問題 The Problem of Division of the Stakes
+### Problem of points / Unfinished Game  / 賭金分配問題 The Problem of Division of the Stakes / 
 
 ```
 money * win round of someone / all possible outcomes of remaining rounds
@@ -54,13 +54,30 @@ list of all the outcome and count
 
 A remain x round to win
 B remain y round to win
-All possible outcomes of remaining rounds = (x - 1) + (y - 1) + 1 = x + y - 1
+Max total remaining rounds = (x - 1) + (y - 1) + 1 = x + y - 1
+
+Xi remain wi round to win, where i from 1 to n
+Max total remaining rounds = sum of (wi - 1)  + 1 = sum of wi  - n + 1
 
 (Out of Syllabus)
 // https://en.wikipedia.org/wiki/Problem_of_points
 ratio of A : ratio of B 
 ratio of A = Sum of k = 0 to s - 1 ( C(r + s - 1, k) )
 ratio of B = Sum of k = s to r + s - 1 ( C(r + s - 1, k) )
+```
+
+### False Positive
+
+```
+Test Always positive if have disease
+Probability of false positive = fp
+Probability of have disease = d
+
+            Positive      Negative
+Disease     d * 1 = d     0
+No disease  d' * fp       Not given
+
+P(disease | positive) = d / (d + d' * fp)
 ```
 
 ### Three Axioms of Probability
