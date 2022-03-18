@@ -52,12 +52,12 @@ https://zh.wikipedia.org/wiki/%E6%8F%92%E7%A9%BA%E6%B3%95
 money * win round of someone / all possible outcomes of remaining rounds
 list of all the outcome and count
 
-(Out of Syllabus)
-// https://en.wikipedia.org/wiki/Problem_of_points
 A remain x round to win
 B remain y round to win
-All possible outcomes of remaining rounds = 2^(x - 1 + y - 1 + 1) = 2^(x + y - 1)
+All possible outcomes of remaining rounds = (x - 1) + (y - 1) + 1 = x + y - 1
 
+(Out of Syllabus)
+// https://en.wikipedia.org/wiki/Problem_of_points
 ratio of A : ratio of B 
 ratio of A = Sum of k = 0 to s - 1 ( C(r + s - 1, k) )
 ratio of B = Sum of k = s to r + s - 1 ( C(r + s - 1, k) )
@@ -246,7 +246,7 @@ P(X >= a) <= E(X) / a  if X >= 0, a > 0
 
 ```
 P(|X - E(X)| >= k * SD(x)) <= 1 / k^2
-P(|X - E(X)| < k * SD(x)) > 1 - 1 / k^2
+P(|X - E(X)| < k * SD(x)) >= 1 - 1 / k^2
 ```
 
 ### Bernoulli’s Utility
