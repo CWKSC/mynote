@@ -97,6 +97,19 @@ BB     BG     GB     GG
 // https://en.wikipedia.org/wiki/Boy_or_Girl_paradox
 ```
 
+### Birthday Problem
+
+```
+n people in the same room, what is the probability of two people born on same day
+
+Probabilty of even one not same birthday:
+1 * (1 - 1 / 365) * (1 - 2 / 365) * (1 - (n - 1) / 365)
+= 365 / 365 * 364 / 365 * 363 / 365 ... (365 - n + 1) / 365
+= 365! / (365^n (365 - n)!)
+
+p(n) = 1 - 365! / (365^n (365 - n)!)
+```
+
 ### False Positive
 
 ```
@@ -253,11 +266,11 @@ E(f(x)) = sum of  f(x) P(X = x)
 E(X + Y) = E(X) + E(Y)
 E(aX) = aE(x)
 
-If X ~ B(n, p)
-E(X) = np
-
 If Independent
 E(XY) = E(X)E(Y)
+
+If X ~ B(n, p)
+E(X) = np
 ```
 
 ### Variance 
