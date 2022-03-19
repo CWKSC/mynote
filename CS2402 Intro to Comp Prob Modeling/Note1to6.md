@@ -66,6 +66,34 @@ ratio of A = Sum of k = 0 to s - 1 ( C(r + s - 1, k) )
 ratio of B = Sum of k = s to r + s - 1 ( C(r + s - 1, k) )
 ```
 
+### Two Children Problem / Boy or Girl paradox
+
+```
+A Family with two children. One of the children is a boy, what is the probability that both children are boys?
+
+BB BG GB
+1 / 3
+
+A Family with two children. One of the children is a girl both in pm, what is the probability that other child is boy both in am?
+
+BB     BG     GB     GG
+Ba Ba  Ba Ga  Ga Ba  Ga Ga
+Ba Bp  Ba Gp  Ga Bp  Ga Gp
+Bp Ba  Bp Ga  Gp Ba  Gp Ga
+Bp Bp  Bp Gp  Gp Bp  Gp Gp
+
+(Filter by one of children is girl both in pm)
+
+BB     BG     GB     GG
+                          
+       Ba Gp         Ga Gp
+              Gp Ba  Gp Ga
+       Bp Gp  Gp Bp  Gp Gp
+
+(Ba Gp, Gp Ba match)
+2 / 7
+```
+
 ### False Positive
 
 ```
