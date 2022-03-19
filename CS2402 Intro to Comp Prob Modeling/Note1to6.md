@@ -74,6 +74,7 @@ A Family with two children. One of the children is a boy, what is the probabilit
 BB BG GB
 1 / 3
 
+
 A Family with two children. One of the children is a girl both in pm, what is the probability that other child is boy both in am?
 
 BB     BG     GB     GG
@@ -92,6 +93,8 @@ BB     BG     GB     GG
 
 (Ba Gp, Gp Ba match)
 2 / 7
+
+// https://en.wikipedia.org/wiki/Boy_or_Girl_paradox
 ```
 
 ### False Positive
