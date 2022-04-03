@@ -87,6 +87,9 @@ P(AB) = P(B) P(A | B)
 
 ```
 P(A) = P(AB) + P(AB')
+P(A) = P(A | B) P(B) + P(A | B') P(B')
+
+// https://en.wikipedia.org/wiki/Law_of_total_probability
 ```
 
 ### Bayesian Method
