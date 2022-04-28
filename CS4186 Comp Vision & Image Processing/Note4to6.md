@@ -99,6 +99,10 @@ Divide image into grid
 For each grid, output class probability and offset
 ```
 
+### Non-Maximum Suppression (NMS)
+
+https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa
+
 ### Harris corner detection
 
 https://en.wikipedia.org/wiki/Harris_corner_detector
