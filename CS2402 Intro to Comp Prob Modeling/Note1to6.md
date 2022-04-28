@@ -214,32 +214,6 @@ E(XY) = E(X) E(Y)
 Var(X + Y) = Var(X) + Var(Y)
 ```
 
-### Conditional probability
-
-```
-P(A | B) = P(A ∩ B) / P(B)
-
-P(A | B) >= 0
-P(A | A) = 1
-P(A1 U A2 U A3 ... | B) = P(A1 | B) + P(A2 | B) + P(A2 | B) + ...
-
-If A B are disjoint
-P(A | B) = 0
-
-If B is subset of A, i.e. B ⊂ A, A ∩ B = B
-P(A | B) = 1
-
-If A is subset of B, i.e. A ⊂ B, A ∩ B = A
-P(A | B) = P(A) / P(B)
-```
-
-### Bayes' rule
-
-```
-P(A | B) = P(A) P(B | A) / P(B)
-P(AB) = P(A | B) P(B) = P(B | A) P(A)
-```
-
 ### Cumulative distribution function (CDF)
 
 ```
