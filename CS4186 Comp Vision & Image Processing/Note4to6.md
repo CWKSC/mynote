@@ -113,32 +113,61 @@ https://senitco.github.io/2017/06/18/image-feature-harris/
 Ix = dI / dx
 Iy = dI / dy
 
-Find Ix^2, Iy^2, IxIy
+E(Δx, Δy) is squared differences (SSD) error with shifting window W by (Δx, Δy)
+E(Δx, Δy) = Σ (x, y) in W  [I(x, y) - I(x + Δx, y + Δy)]^2
 
-M(x, y) = Σw [ Ix^2  IxIy ]
-               IxIy  Iy^2
+By Taylor series,
+I(x + Δx, y + Δy) = I(x, y) + Ix(x, y)Δx + Iy(x, y)Δy
 
-E(u, v) = [u v] M(x, y) [ u ]
-                          v
-        = Au^2 + 2Cuv + Bv^2
+E(Δx, Δy) = Σ (x, y) in W  [Ix(x, y)Δx + Iy(x, y)Δy]^2
+          = A Δx^2 + 2B Δx Δy + C Δy^2
 where
 A = Σw Ix^2
 B = Σw IY^2
 C = Σw IxIy
 
-[u v] M(x, y) [ u ] = 1
-                v
+E(Δx, Δy) = [Δx, Δy] M(Δx, Δy) [ Δx ]
+                                 Δy
+M(x, y) = Σw [ Ix^2  IxIy ]
+               IxIy  Iy^2
 
-M = [ λ1  0  ]
-      0   λ2
+Me = λe 
+(M - λI)e = 0
 
-R = det(M) - α trace(M)^2
+1. Compute the determinant of M - λI
+2. Find the roots of polynomial det(M - λI) = 0
+3. For each eigenvalue, solve (M - λI)e = 0
+
+R = det(M) - k trace(M)^2
 det(M) = λ1λ2 = AB - C^2
 trace(M) = λ1 + λ2 = A + B
+
+it is Edge if λ1 >> λ2 or λ2 >> λ1
+it is Corner if λ1, λ2 is large, and λ1 ~ λ2
+it is Flat if λ1, λ2 are small, and λ1 ~ λ2
+
+R = det(M) - k trace(M)^2   Harris & Stephens (1988)
+R = min(λ1, λ2)             Kanade & Tomasi (1994)
+R = det(M) / trace(M)       Nobel (1998)
 
 Threshold with value T
 
 Non-maximum suppression with a window (e.g. 5 * 5 window)
+```
+
+### Harris detector: Invariance properties
+
+```
+Shift invariant
+Rotation invariant
+Partially invariant to affine intensity change
+
+Non-invariant to image scale
+How to make the corner detection robust to scale change?
+– Use a larger window size to compute Harris matrix
+– Randomly select multiple window size to compute Harris matrix
+– Compute the Harris matrix for each of Gaussian pyramid image using different window sizes
+– Compute the Harris matrix for each of Gaussian pyramid image using the same window size
 ```
 
 ### Laplacian of Gaussian (LoG)
@@ -157,13 +186,38 @@ https://en.wikipedia.org/wiki/Difference_of_Gaussians
 
 https://zh.wikipedia.org/wiki/%E5%B0%BA%E5%BA%A6%E4%B8%8D%E8%AE%8A%E7%89%B9%E5%BE%B5%E8%BD%89%E6%8F%9B
 
-https://zhuanlan.zhihu.com/p/261697473
+https://zhuanlan.zhihu.com/p/261697473	
 
 https://zhuanlan.zhihu.com/p/43543527
 
 https://medium.com/data-breach/introduction-to-sift-scale-invariant-feature-transform-65d7f3a72d40
 
 ```
+Scale-space peak Selection
+-> Gaussian pyramid
+-> Difference of Gaussian blurring
+-> DoG
+
+Finding keypoints
+-> Pixel compare with 8 neighbors, and 9 pixels in next scale level and 9 pixels in previous scales level
+-> 8 + 9 + 9 = 26 number of compare
+
+Keypoint Localization
+-> Filter the value that < 0.03
+
+Orientation Assignment
+-> Take the neighborhood of keypoint depend on scale
+-> Compute gradient magnitude and direction of region
+-> Orientation histogram with 36 bins cover 360 degrees
+-> Take the peak of histogram (any peak above 80% also considered as orientation)
+
+Keypoint descriptor
+-> each keypoint has a location, scale, orientation
+-> as keypoint as cente r, divide to 16 * 16 window into 4 * 4 grid
+-> for each sub block, 8 bin orientation histogram is created
+-> 16 * 8 = 128 dimensional descriptor
+
+Keypoint Matching
 ```
 
 ### k-mean clustering
