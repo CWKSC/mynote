@@ -164,9 +164,6 @@ Partially invariant to affine intensity change
 
 Non-invariant to image scale
 How to make the corner detection robust to scale change?
-– Use a larger window size to compute Harris matrix
-– Randomly select multiple window size to compute Harris matrix
-– Compute the Harris matrix for each of Gaussian pyramid image using different window sizes
 – Compute the Harris matrix for each of Gaussian pyramid image using the same window size
 ```
 
