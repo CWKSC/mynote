@@ -130,6 +130,11 @@ E(Δx, Δy) = [Δx, Δy] M(Δx, Δy) [ Δx ]
                                  Δy
 M(x, y) = Σw [ Ix^2  IxIy ]
                IxIy  Iy^2
+M(x, y) = Σw [ A B ]
+               B C
+A = Σw Ix^2
+B = Σw IxIy
+C = Σw Iy^2
 
 Me = λe 
 (M - λI)e = 0
@@ -139,8 +144,8 @@ Me = λe
 3. For each eigenvalue, solve (M - λI)e = 0
 
 R = det(M) - k trace(M)^2
-det(M) = λ1λ2 = AB - C^2
-trace(M) = λ1 + λ2 = A + B
+det(M) = λ1λ2 = AC - B^2
+trace(M) = λ1 + λ2 = A + C
 
 it is Edge if λ1 >> λ2 or λ2 >> λ1
 it is Corner if λ1, λ2 is large, and λ1 ~ λ2
