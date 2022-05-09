@@ -182,3 +182,12 @@ If B(n, p) where n is very large and p is very small
 B(n, p) ~= Poisson(np)
 ```
 
+### Uniform Distribution
+
+```
+f(x) = 1 / (x_max - x_min) if x_min <= x <= x_max  else 0
+
+E(x) = (x_min + x_max) / 2
+Var(X) = (x_max - x_min)^2 / 12
+```
+
