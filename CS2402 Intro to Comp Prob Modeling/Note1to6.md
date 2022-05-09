@@ -255,6 +255,7 @@ Var(X) = E(X^2) - E(X)^2
 
 Var(X + a) = Var(X)
 Var(aX) = a^2 Var(X)
+Var(-X) = Var(X)
 
 If Independent
 Var(X + Y) = Var(X) + Var(Y)
