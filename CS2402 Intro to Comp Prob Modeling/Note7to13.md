@@ -134,3 +134,51 @@ P(H | E) : P(H' | E) = P(H) P(E | H) : P(H') P(E | H')
 ```
 
 https://brohrer.mcknote.com/zh-Hant/statistics/how_bayesian_inference_works.html
+
+### Linear Regression
+
+```
+y = mx + c
+
+find
+x
+y
+x - mean x
+y - mean y
+(x - mean x) (y - mean y)
+(x - mean x)^2
+Sxy
+Sxx
+
+m = Sxy / Sxx
+c = mean y - m mean x
+```
+
+### Correlation Coefficient (r)
+
+```
+r = 1 / (n - 1) Σi=1 to n  ((xi - mean x) / Sx) ((yi - mean y) / Sy)
+```
+
+### Maximum Likelihood Estimation (MLE)
+
+https://people.missouristate.edu/songfengzheng/Teaching/MTH541/Lecture%20notes/MLE.pdf
+
+### Poisson Distribution
+
+```
+P(X = k) = λ^k e^(-λ) / k!
+
+P(X = 0) = e^(-λ)
+P(X = 1) = λ e^(-λ) 
+P(X = 2) = λ^2 e^(-λ) / 2
+P(X = 2) = λ^3 e^(-λ) / 6
+
+E(X) = λ
+Var(X) = λ
+SD(X) = sqrt(λ)
+
+If B(n, p) where n is very large and p is very small
+B(n, p) ~= Poisson(np)
+```
+
